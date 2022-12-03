@@ -79,10 +79,6 @@ const sendMessage = async () => {
     await expect(page.getByText('Please check this page regularly for further updates.')).toBeVisible();
 
     console.log('Just checked the site and it is unchanged.');
-    if (process.env.TEST_SLACK_MESSAGE = true) {
-      console.log('testing mode active... testing sending a slack message...')
-      sendMessage();
-    }
   } catch (e) {
     console.error('Playwright assertion failure: ', e);
 
