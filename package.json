@@ -1,0 +1,26 @@
+{
+  "name": "wc2026-tix-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsturtz/wc2026-tix-scraper.git"
+  },
+  "author": "Taylor Sturtz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tsturtz/wc2026-tix-scraper/issues"
+  },
+  "homepage": "https://github.com/tsturtz/wc2026-tix-scraper#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  },
+  "dependencies": {
+    "@slack/webhook": "^6.1.0",
+    "playwright": "^1.28.1"
+  }
+}
