@@ -9,13 +9,13 @@ const webhook = new IncomingWebhook(url);
 
 const sendMessage = async () => {
   // Ping 3x cause wake up
-  await webhook.send({"text": '<@U0M3LEFK4>'})
+  await webhook.send({"text": `<@${process.env.WC_BOT_SLACK_USER_ID}>`})
   .then((res) => { console.log('Pinged successfully: ', res) })
   .catch((err) => { console.log('Error pinging: ', err) });
-  await webhook.send({"text": '<@U0M3LEFK4>'})
+  await webhook.send({"text": `<@${process.env.WC_BOT_SLACK_USER_ID}>`})
   .then((res) => { console.log('Pinged successfully: ', res) })
   .catch((err) => { console.log('Error pinging: ', err) });
-  await webhook.send({"text": '<@U0M3LEFK4>'})
+  await webhook.send({"text": `<@${process.env.WC_BOT_SLACK_USER_ID}>`})
   .then((res) => { console.log('Pinged successfully: ', res) })
   .catch((err) => { console.log('Error pinging: ', err) });
 
