@@ -78,7 +78,7 @@ const sendMessage = async () => {
     await expect(page.getByText('Information regarding ticketing for the FIFA World Cup 2026™ will be available in due course.')).toBeVisible();
     await expect(page.getByText('Please check this page regularly for further updates.')).toBeVisible();
 
-    console.log('Just checked the site and it is unchanged.');
+    console.log('Just checked the site and it is unchanged. Timestamp: ', new Date());
   } catch (e) {
     console.error('Playwright assertion failure: ', e);
 
