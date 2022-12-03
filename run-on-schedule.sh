@@ -3,5 +3,6 @@
 while :
 do
   node index.js
-  sleep 10
+  echo "Sleeping for [$WC_BOT_SLEEP_SECONDS] seconds"
+  sleep $WC_BOT_SLEEP_SECONDS
 done

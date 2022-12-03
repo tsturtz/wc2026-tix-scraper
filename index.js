@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 const { expect } = require('@playwright/test');
 const { IncomingWebhook } = require('@slack/webhook');
 
-const url = process.env.SLACK_WEBHOOK_URL;
+const url = process.env.WC_BOT_SLACK_WEBHOOK_URL;
 
 // Initialize slack webhook
 const webhook = new IncomingWebhook(url);
@@ -79,6 +79,10 @@ const sendMessage = async () => {
     await expect(page.getByText('Please check this page regularly for further updates.')).toBeVisible();
 
     console.log('Just checked the site and it is unchanged.');
+    if (process.env.TEST_SLACK_MESSAGE = true) {
+      console.log('testing mode active... testing sending a slack message...')
+      sendMessage();
+    }
   } catch (e) {
     console.error('Playwright assertion failure: ', e);
 
