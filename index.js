@@ -7,7 +7,23 @@ const url = process.env.WC_BOT_SLACK_WEBHOOK_URL;
 // Initialize slack webhook
 const webhook = new IncomingWebhook(url);
 
-const sendMessage = async () => {
+const sendHealthCheckMessage = async () => {
+  await webhook.send({"blocks": [
+    {
+			"type": "context",
+			"elements": [
+				{
+					"type": "plain_text",
+					"text": "WC2026TIX Bot: :heavy_check_mark: health check."
+				}
+			]
+		}
+  ]})
+  .then((res) => { console.log('Health check notice sent successfully: ', res) })
+  .catch((err) => { console.log('Error sending health check: ', err) });
+}
+
+const sendTestFailMessage = async () => {
   // Ping 3x cause wake up
   await webhook.send({"text": `<@${process.env.WC_BOT_SLACK_USER_ID}>`})
   .then((res) => { console.log('Pinged successfully: ', res) })
@@ -79,10 +95,14 @@ const sendMessage = async () => {
     await expect(page.getByText('Please check this page regularly for further updates.')).toBeVisible();
 
     console.log('Just checked the site and it is unchanged. Timestamp: ', new Date());
+
+    if (Number(process.env.COUNT) % 24 === 0) {
+      sendHealthCheckMessage();
+    }
   } catch (e) {
     console.error('Playwright assertion failure: ', e);
 
-    sendMessage();
+    sendTestFailMessage();
   }
 
   await browser.close();
