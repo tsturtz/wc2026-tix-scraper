@@ -16,10 +16,8 @@
     "url": "https://github.com/tsturtz/wc2026-tix-scraper/issues"
   },
   "homepage": "https://github.com/tsturtz/wc2026-tix-scraper#readme",
-  "devDependencies": {
-    "@playwright/test": "^1.28.1"
-  },
   "dependencies": {
+    "@playwright/test": "^1.28.1",
     "@slack/webhook": "^6.1.0",
     "playwright": "^1.28.1"
   }
