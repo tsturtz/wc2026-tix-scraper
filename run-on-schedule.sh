@@ -9,5 +9,5 @@ do
   node index.js
   ((COUNT++))
   echo "Sleeping for [$WC_BOT_SLEEP_SECONDS] seconds"
-  sleep $WC_BOT_SLEEP_SECONDS
+  sleep 3000
 done
