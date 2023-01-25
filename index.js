@@ -10,14 +10,13 @@ const webhook = new IncomingWebhook(url);
 const sendHealthCheckMessage = async () => {
   await webhook.send({"blocks": [
     {
-			"type": "context",
-			"elements": [
-				{
-					"type": "plain_text",
-					"text": "WC2026TIX Bot: :heavy_check_mark: health check."
-				}
-			]
-		}
+			"type": "section",
+			"text": {
+				"type": "plain_text",
+				"text": "WC2026TIX Bot: :heavy_check_mark: health check.",
+				"emoji": true
+			}
+		},
   ]})
   .then((res) => { console.log('Health check notice sent successfully: ', res) })
   .catch((err) => { console.log('Error sending health check: ', err) });
@@ -96,7 +95,8 @@ const sendTestFailMessage = async () => {
 
     console.log('Just checked the site and it is unchanged. Timestamp: ', new Date());
 
-    if (Number(process.env.COUNT) % 24 === 0) {
+    const count = Number(process.env.COUNT);
+    if (count === 1 || count % 24 === 0) {
       sendHealthCheckMessage();
     }
   } catch (e) {
